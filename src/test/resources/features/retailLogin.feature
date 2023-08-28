@@ -20,6 +20,6 @@ Scenario Outline: Verify user is able to register with tek retail website
 	
 Examples:
 |name|email|password|confPassword|
-|Amir|Amir.zamani004@gmail.com|Amir@2017|Amir@2017|
-|Amir|Amir.zamani005@gmail.com|Amir@2017|Amir@2017|
-|Amir|Amir.zamani006@gmail.com|Amir@2017|Amir@2017|
+|Amir|Amir.zamani007@gmail.com|Amir@2017|Amir@2017|
+|Amir|Amir.zamani008@gmail.com|Amir@2017|Amir@2017|
+|Amir|Amir.zamani009@gmail.com|Amir@2017|Amir@2017|
