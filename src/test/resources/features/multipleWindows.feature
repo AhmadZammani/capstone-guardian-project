@@ -1,3 +1,4 @@
+@Smoke
 Feature: Multiple Windows
 
 @multipleWindows

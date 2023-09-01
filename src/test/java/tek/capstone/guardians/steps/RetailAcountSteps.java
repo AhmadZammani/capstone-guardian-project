@@ -14,6 +14,7 @@ import tek.capstone.guardians.utilities.DataGenerator;
 
 public class RetailAcountSteps extends CommonUtility {
 	POMFactory factory = new POMFactory();
+	private String randomInfo;
 
 	@When("User click on Account option")
 	public void userClickOnAccountOption() {
@@ -23,12 +24,13 @@ public class RetailAcountSteps extends CommonUtility {
 
 	@When("User update Name {string} and Phone {string}")
 	public void userUpdateNameAndPhone(String name, String phoneNumber) {
+		randomInfo = DataGenerator.RandomPhoneNumber();
 		clearTextUsingSendKeys(factory.retailacountpage().updateName);
 		sendText(factory.retailacountpage().updateName, name);
 		logger.info("Name entered successfully");
 
 		clearTextUsingSendKeys(factory.retailacountpage().updatePhone);
-		sendText(factory.retailacountpage().updatePhone, phoneNumber);
+		sendText(factory.retailacountpage().updatePhone, randomInfo);
 		logger.info("phone number successfull udated");
 
 	}
@@ -73,7 +75,7 @@ public class RetailAcountSteps extends CommonUtility {
 
 	@Then("a message should be displayed {string}")
 	public void aMessageShouldBeDisplayed(String expectedMssg) {
-		if (expectedMssg.contains("ayment Method added")) {
+		if (expectedMssg.contains("Payment Method added successfully")) {
 			waitTillPresence(factory.retailacountpage().PaymentMethodSuccessMss);
 			Assert.assertEquals(expectedMssg, factory.retailacountpage().PaymentMethodSuccessMss.getText());
 			logger.info("Expected message " + expectedMssg);
@@ -112,17 +114,16 @@ public class RetailAcountSteps extends CommonUtility {
 		sendText(factory.retailacountpage().AreaCode,
 				DataGenerator.addressGenerator(AddressInfo.get(0).get("zipCode")));
 		logger.info("The Address form has been filled out successfully");
-		
-		
 
 	}
+
 	@When("User click Add Your Address button")
 	public void userClickAddYourAddressButton() {
-	    click(factory.retailacountpage().creattAdressBttn);
-	    logger.info("user click on create address successfully");
-	    
+		click(factory.retailacountpage().creattAdressBttn);
+		logger.info("user click on create address successfully");
+
 	}
-	
+
 	// below the edit address code flow
 	@When("User click on edit address option")
 	public void userClickOnEditAddressOption() {
@@ -182,8 +183,9 @@ public class RetailAcountSteps extends CommonUtility {
 
 	@Then("Address details should be removed")
 	public void addressDetailsShouldBeRemoved() {
-		if (!isElementDisplayed(factory.retailacountpage().removeAddressBar));
-			
+		if (!isElementDisplayed(factory.retailacountpage().removeAddressBar))
+			;
+
 		logger.info("Address has removed successfully");
 	}
 

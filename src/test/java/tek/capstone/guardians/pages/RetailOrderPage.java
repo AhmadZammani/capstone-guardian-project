@@ -45,6 +45,12 @@ public class RetailOrderPage extends BaseSetup {
 
 	@FindBy(xpath = "//div[text()='Order Placed Successfully']")
 	public WebElement OrderplacemetConfiredMssg;
+	
+	@FindBy(xpath = "//p[text() ='Cart ']")
+	public WebElement cart;
+	
+	@FindBy(xpath = "//span[text()='Delete']")
+    public List<WebElement> emptycart;
 
 	@FindBy(xpath = "//img[starts-with(@alt,'Apex Legends ')]")
 	public WebElement ApexLegend;

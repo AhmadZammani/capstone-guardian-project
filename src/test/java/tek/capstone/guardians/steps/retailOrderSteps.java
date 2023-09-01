@@ -56,6 +56,17 @@ public class retailOrderSteps extends CommonUtility {
 		// the below is addind item in the cart
 	}
 
+// the extra step
+	@Then("user cleans the cart before moving on")
+	public void userCleansTheCartBeforeMovingOn() throws InterruptedException {
+		click(factory.retailOrderPage().cart);
+		List<WebElement> empty = factory.retailOrderPage().emptycart;
+		for (WebElement emp : empty) {
+			click(emp);
+		}
+		Thread.sleep(2000);
+	}
+
 	@Then("User change the category to {string} Apex Legends")
 	public void userChangeTheCategoryToApexLegends(String Electronics) {
 		selectByVisibleText(factory.retailOrderPage().ApartmentsdropDown, Electronics);
@@ -127,9 +138,9 @@ public class retailOrderSteps extends CommonUtility {
 	public void userClickOnCancelTheOrderButton() {
 		List<WebElement> CancelOrder = factory.retailOrderPage().OrderCancelBttn;
 		click(CancelOrder.get(0));// this only cancell one itmem in the order list
-		//for(int i=0; i<CancelOrder.size(); i++) {
-			//click(CancelOrder.get(i)); // this loop cancell all orders 
-		//}
+		// for(int i=0; i<CancelOrder.size(); i++) {
+		// click(CancelOrder.get(i)); // this loop cancell all orders
+		// }
 		logger.info("Order button was clicked");
 	}
 
@@ -141,14 +152,14 @@ public class retailOrderSteps extends CommonUtility {
 
 	@Then("User click on Cancel Order button")
 	public void userClickOnCancelOrderButton() {
-     click(factory.retailOrderPage().CancellationBttn);
-     logger.info("The order has been cancelled ");
+		click(factory.retailOrderPage().CancellationBttn);
+		logger.info("The order has been cancelled ");
 	}
 
 	@Then("a cancelation message should be displayed {string}")
 	public void aCancelationMessageShouldBeDisplayed(String CancelationMssg) {
-    Assert.assertEquals(CancelationMssg, factory.retailOrderPage().CancellConfrimationMssg.getText());
-    logger.info("Cancelation message verified succeesfully");
+		Assert.assertEquals(CancelationMssg, factory.retailOrderPage().CancellConfrimationMssg.getText());
+		logger.info("Cancelation message verified succeesfully");
 	}
 
 }

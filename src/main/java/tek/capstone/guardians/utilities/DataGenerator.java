@@ -1,36 +1,55 @@
 package tek.capstone.guardians.utilities;
+
 import com.github.javafaker.Faker;
 
 public class DataGenerator {
 
-public static String addressGenerator(String input) {
-		
+	public static String addressGenerator(String input) {
+
 		Faker faker = new Faker();
-		
-		String output ="";
-		
-		if(input.equalsIgnoreCase("countryValue")) {
+
+		String output = "";
+
+		if (input.equalsIgnoreCase("countryValue")) {
 			output = "United States";
-		}else if(input.equalsIgnoreCase("fullnameValue")) {
+		} else if (input.equalsIgnoreCase("fullnameValue")) {
 			output = faker.name().fullName();
-		}else if(input.equalsIgnoreCase("PhoneValue")){
+		} else if (input.equalsIgnoreCase("PhoneValue")) {
 			output = faker.phoneNumber().cellPhone();
-		}else if(input.equalsIgnoreCase("stAddress")) {
+		} else if (input.equalsIgnoreCase("stAddress")) {
 			output = faker.address().streetAddress();
-		}else if(input.equalsIgnoreCase("aptValue")) {
+		} else if (input.equalsIgnoreCase("aptValue")) {
 			output = faker.address().secondaryAddress();
-		}else if(input.equalsIgnoreCase("cityValue")) {
+		} else if (input.equalsIgnoreCase("cityValue")) {
 			output = faker.address().city();
-		}else if(input.equalsIgnoreCase("stateValue")) {
+		} else if (input.equalsIgnoreCase("stateValue")) {
 			output = faker.address().state();
-		}else if(input.equalsIgnoreCase("zipCodeValue")) {
-			String zipcode = faker.address().zipCode().substring(0,5);
+		} else if (input.equalsIgnoreCase("zipCodeValue")) {
+			String zipcode = faker.address().zipCode().substring(0, 5);
 			output = zipcode;
 		}
 		return output;
-		
+
 	}
 
+	public static String RandomPhoneNumber() {
+		String phoneNumber = "";
 
+		for (int i = 0; i < 10; i++) {
+			int phoneNumberDigit = (int) (Math.random() * 10);
+			phoneNumber += phoneNumberDigit;
+		}
+		return phoneNumber;
+
+	}
+	
+	public static String getEmail() {
+		String prefix = "Farhad";
+		String provider = "@gmail.com";
+		int random = (int)(Math.random()* 10000);
+		String email =prefix +random +provider;
+		return email;
+	}
+	
 
 }

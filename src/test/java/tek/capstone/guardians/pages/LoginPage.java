@@ -46,8 +46,8 @@ public class LoginPage extends BaseSetup {
 	@FindBy(id="signupBtn")
 	public WebElement SignUpp;
 	
-	@FindBy(xpath="//h1[text()='Amir']")
-	public WebElement Myprofile;
+	@FindBy(id="logoutBtn")
+	public WebElement logout ;
 	
 	
 	
